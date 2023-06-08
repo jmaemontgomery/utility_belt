@@ -1,11 +1,19 @@
 #!/usr/bin/python
 # Pull box size from OpenMM-style state file (in nm) & replace it in target file (in angstrom)
 # Assumes target to be styled "<BOXX>", "<BOXY>", and "<BOXZ>"
+import argparse
 
-# To do: Edit to include user flags for file names and string to replace with box size
+# To do: Edit to include user flags for string to replace with box size
 
-rstfile = "/path/to/rstfile.rst"
-targetfile = "/path/to/target/to/change.inp"
+parser = argparse.ArgumentParser(description='Scrape a box size from an OpenMM-Style state file (in nm) & replace it in a target file (in angstrom). Assumes your target file is styled "<BOXX>", "<BOXY>", and "<BOXZ>" where you want it replaced.')
+
+parser.add_argument('-rst', type = str, help = 'Path to your RST file.')
+parser.add_argument('-target', type = str, help = 'Path to your target file.')
+
+args = parser.parse_args()
+
+rstfile = args.rst
+targetfile = args.target
 
 f = open(rstfile, 'r')
 
