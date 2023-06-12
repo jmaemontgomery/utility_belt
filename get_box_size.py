@@ -5,11 +5,11 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Scrape a box size from an OpenMM-Style state file (in nm) & replace it in a target file (in angstrom). Assumes your target file is styled "<BOXX>", "<BOXY>", and "<BOXZ>" where you want it replaced, unless user defines differently')
 
-parser.add_argument('-rstFile', type = str, required = True, help = 'Path to your RST file.')
-parser.add_argument('-targetFile', type = str, required = True, help = 'Path to your target file.')
-parser.add_argument('-replaceX', type = str, default = "<BOXX>", help = 'Change target phrase (default "<BOXX>")')
-parser.add_argument('-replaceY', type = str, default = "<BOXY>", help = 'Change target phrase (default "<BOXY>")')
-parser.add_argument('-replaceZ', type = str, default = "<BOXZ>", help = 'Change target phrase (default "<BOXZ>")')
+parser.add_argument('-r', '--rstFile', type = str, required = True, metavar = 'file path', help = 'Path to your RST file.')
+parser.add_argument('-t', '--targetFile', type = str, required = True, metavar = 'file path', help = 'Path to your target file.')
+parser.add_argument('-rx', '--replaceX', type = str, default = "<BOXX>", metavar = 'string', help = 'Change target phrase (default "<BOXX>")')
+parser.add_argument('-ry','--replaceY', type = str, default = "<BOXY>", metavar = 'string', help = 'Change target phrase (default "<BOXY>")')
+parser.add_argument('-rz','--replaceZ', type = str, default = "<BOXZ>", metavar = 'string', help = 'Change target phrase (default "<BOXZ>")')
 
 args = parser.parse_args()
 
