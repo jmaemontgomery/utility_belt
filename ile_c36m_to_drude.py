@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # Script to convert C36m ILE to drude nomenclature in CRDs and PDBs
-# To do: add functionality to keep old version of file
 import os
 import argparse
 
@@ -18,8 +17,11 @@ for fp in filepaths:
         print (fp, "is an crd!")
 
         # Read in the file
-        with open(fp, 'r') as file :
+        with open(fp, 'r') as file:
             filedata = file.read()
+
+        # Save & rename old version of the file
+        os.rename(fp, fp + '.old')
 
         # Replace the target string
         filedata = filedata.replace(' ILE       CD ', ' ILE       CD1')
@@ -36,6 +38,9 @@ for fp in filepaths:
         # Read in the file
         with open(fp, 'r') as file :
             filedata = file.read()
+
+        # Save & rename old version of the file
+        os.rename(fp, fp + '.old')
 
         # Replace the target string
         filedata = filedata.replace(' CD  ILE', ' CD1 ILE')
